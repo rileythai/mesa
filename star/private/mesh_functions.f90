@@ -291,9 +291,9 @@
                k = s% conv_bdy_loc(j)
                if (s% dq(k) < s% convective_bdy_dq_limit) cycle
                vals(k,i) = s% convective_bdy_weight
-               if (k < nz .and. s% top_conv_bdy(i)) then
+               if (k < nz .and. s% top_conv_bdy(j)) then
                   vals(k+1,i) = s% convective_bdy_weight
-               else if (k > 1 .and. .not. s% top_conv_bdy(i)) then
+               else if (k > 1 .and. .not. s% top_conv_bdy(j)) then
                   vals(k-1,i) = s% convective_bdy_weight
                end if
             end do
