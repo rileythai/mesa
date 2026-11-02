@@ -64,9 +64,10 @@ module ion_offset
          end do
 
          ! Normalize number fraction
-         do k=1,species
-            ya(k) = ya(k) / norm
-         end do
+         ! BUG: this should just be mass frac otherwise it is off by a factor abar, gh@1086
+         !do k=1,species
+         !   ya(k) = ya(k) / norm
+         !end do
 
          ! Compute offset in eV/baryon
          offset = 0d0
