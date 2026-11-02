@@ -1206,7 +1206,10 @@
          D = 1.0d0
 
          U = pow(input% den6*input% ye,two_thirds)
-         tfermi = A * (sqrt(U) - D)
+
+         ! BUG: incorrect expression since r15140, spotted by Pablo Diaz Navarrete on mesa-users
+         !tfermi = A * (sqrt(U) - D)
+         tfermi = A * (sqrt(B + C * U) - D)
 
          if (input% temp >= tfhi * tfermi) then
 
@@ -1238,7 +1241,9 @@
             beta = 1d0 - alfa
 
 
-            dtfermidu = (1d0/2d0) * A * pow(U,-1d0/2d0)
+            ! BUG: incorrect expression since r15140, spotted by Pablo Diaz Navarrete on mesa-users
+            !dtfermidu = (1d0/2d0) * A * pow(U,-1d0/2d0)
+            dtfermidu = (1d0/2d0) * A * C * pow(B + C* U,-1d0/2d0)
             dtfracdtfermi = -input% temp/(tfermi * tfermi * dtf )
 
             ! v = den6* ye  = den *10**-6 * ye
