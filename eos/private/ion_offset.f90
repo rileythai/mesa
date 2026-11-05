@@ -55,7 +55,6 @@ module ion_offset
          real(dp) :: A(species)
 
          ! Get basic species info
-         norm = 0d0
          do k=1,species
             A(k) = chem_isos% Z_plus_N(chem_id(k))  ! baryon number
             Z(k) = chem_isos% Z(chem_id(k))  ! charge
